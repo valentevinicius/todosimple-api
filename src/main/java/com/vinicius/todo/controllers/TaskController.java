@@ -21,8 +21,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.vinicius.todo.models.Task;
 import com.vinicius.todo.services.TaskService;
 
-import io.micrometer.core.ipc.http.HttpSender.Response;
-
 @RestController
 @RequestMapping("/task")
 @Validated
