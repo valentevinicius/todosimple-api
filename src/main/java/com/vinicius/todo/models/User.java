@@ -30,6 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
+
 public class User {
     public interface CreateUser {
     }
