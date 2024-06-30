@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vinicius.todo.models.Task;
 import com.vinicius.todo.models.User;
 import com.vinicius.todo.repositories.TaskRepository;
+import com.vinicius.todo.services.exceptions.DataBindingViolationException;
+import com.vinicius.todo.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class TaskService {
@@ -27,7 +29,7 @@ public class TaskService {
     
     public Task findById(Long id) {
         Optional<Task> task = this.taskRepository.findById(id);
-        return task.orElseThrow(() -> new RuntimeException(
+        return task.orElseThrow(() -> new ObjectNotFoundException(
             "Task not found!\nId: " + id +", Tipo: " + Task.class.getName()
             )
         );
@@ -54,7 +56,7 @@ public class TaskService {
         try {
             this.taskRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException("Not possible to delete, there are related entities");
+            throw new DataBindingViolationException("Not possible to delete, there are related entities");
         }
     }
 }
