@@ -1,1 +1,1 @@
-# todosimple-api
+# Simple TODO RESTful API using Java Springboot
